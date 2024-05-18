@@ -16,6 +16,9 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Provider } from "react-redux";
 import { store } from "./store";
+import AboutScreen from "./screens/AboutScreen";
+import Contact from "./screens/Contact";
+import ServicesScreen from "./screens/ServicesScreen";
 
 const appRoute = createBrowserRouter(
   createRoutesFromElements(
@@ -23,6 +26,9 @@ const appRoute = createBrowserRouter(
       <Route path="/" index={true} element={<HomeScreen />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/about" element={<AboutScreen />} />
+      <Route path="/contact" element={<Contact />} />
+      <Route path="/services" element={<ServicesScreen />} />
     </Route>
   )
 );

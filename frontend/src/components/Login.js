@@ -21,85 +21,119 @@ const Login = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    console.log("Clicked");
+
+    console.log(formData);
   };
 
   // if (isLoading) {
   //   return <CustomSpinner />;
   // }
-  return (
-    <>
-      <div class="text-center mt-24">
-        <div class="flex items-center justify-center">
-          <svg
-            fill="none"
-            viewBox="0 0 24 24"
-            class="w-12 h-12 text-blue-500"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-            />
-          </svg>
-        </div>
-        <h2 class="text-4xl tracking-tight">Sign in into your account</h2>
-        <span class="text-sm">
-          or{" "}
-          <Link to="/register" class="text-blue-500">
-            register a new account
-          </Link>
-        </span>
-      </div>
-      <div class="flex justify-center my-2 mx-4 md:mx-0">
-        <form
-          class="w-full max-w-xl bg-white rounded-lg shadow-md p-6"
-          onSubmit={onSubmit}
-        >
-          <div class="flex flex-wrap -mx-3 mb-6">
-            <div class="w-full md:w-full px-3 mb-6">
-              <label
-                class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                for="Password"
-              >
-                Email address
-              </label>
-              <input
-                class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
-                type="email"
-                required
-                value={email}
-                onChange={onChange}
-                name="email"
-              />
-            </div>
-            <div class="w-full md:w-full px-3 mb-6">
-              <label
-                class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                for="Password"
-              >
-                Password
-              </label>
-              <input
-                class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
-                type="password"
-                required
-                value={password}
-                onChange={onChange}
-                name="password"
-              />
-            </div>
 
-            <div class="w-full md:w-full px-3 mb-6">
-              <button class="appearance-none block w-full bg-blue-600 text-gray-100 font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-blue-500 focus:outline-none focus:bg-white focus:border-gray-500">
+  return (
+    <section className="bg-gray-50 dark:bg-gray-900">
+      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+        <Link
+          to="#"
+          className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"
+        >
+          <img
+            className="w-8 h-8 mr-2"
+            src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg"
+            alt="logo"
+          />
+          Flowbite
+        </Link>
+        <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+          <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+            <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+              Sign in to your account
+            </h1>
+            <form className="space-y-4 md:space-y-6" action="#">
+              <div>
+                <label
+                  htmlFor="email"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Your email
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  value={email}
+                  onChange={onChange}
+                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="name@company.com"
+                  required=""
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="password"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Password
+                </label>
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  value={password}
+                  onChange={onChange}
+                  placeholder="••••••••"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  required=""
+                />
+              </div>
+              <div className="flex items-center justify-between">
+                <div className="flex items-start">
+                  <div className="flex items-center h-5">
+                    <input
+                      id="remember"
+                      aria-describedby="remember"
+                      type="checkbox"
+                      className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
+                      required=""
+                    />
+                  </div>
+                  <div className="ml-3 text-sm">
+                    <label
+                      htmlFor="remember"
+                      className="text-gray-500 dark:text-gray-300"
+                    >
+                      Remember me
+                    </label>
+                  </div>
+                </div>
+                <Link
+                  to="#"
+                  className="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500"
+                >
+                  Forgot password?
+                </Link>
+              </div>
+              <button
+                type="submit"
+                onClick={onSubmit}
+                className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-primary-800"
+              >
                 Sign in
               </button>
-            </div>
+              <p className="text-sm font-light text-gray-500 dark:text-gray-400">
+                Don’t have an account yet?{" "}
+                <Link
+                  to="/register"
+                  className="font-medium text-blue-600 hover:underline dark:text-blue-500"
+                >
+                  Sign up
+                </Link>
+              </p>
+            </form>
           </div>
-        </form>
+        </div>
       </div>
-    </>
+    </section>
   );
 };
 

@@ -19,6 +19,7 @@ import { store } from "./store";
 import AboutScreen from "./screens/AboutScreen";
 import Contact from "./screens/Contact";
 import ServicesScreen from "./screens/ServicesScreen";
+import PrivateRoute from "./components/PrivateRoute";
 
 const appRoute = createBrowserRouter(
   createRoutesFromElements(
@@ -26,9 +27,30 @@ const appRoute = createBrowserRouter(
       <Route path="/" index={true} element={<HomeScreen />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
-      <Route path="/about" element={<AboutScreen />} />
-      <Route path="/contact" element={<Contact />} />
-      <Route path="/services" element={<ServicesScreen />} />
+      <Route
+        path="/about"
+        element={
+          <PrivateRoute>
+            <AboutScreen />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/contact"
+        element={
+          <PrivateRoute>
+            <Contact />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/services"
+        element={
+          <PrivateRoute>
+            <ServicesScreen />
+          </PrivateRoute>
+        }
+      />
     </Route>
   )
 );

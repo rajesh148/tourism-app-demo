@@ -8,12 +8,20 @@ const User = require("../models/userModel");
 // @route   /api/users
 // @access  Public
 const registerUser = asyncHandler(async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, mobile, password } = req.body;
 
   // Validation
-  if (!name || !email || !password) {
+  if (!name || !email || !mobile || !password) {
     res.status(400);
     throw new Error("Please include all fields");
+  }
+
+  var val = parseInt(mobile);
+  if (/^\d{10}$/.test(val)) {
+    // value is ok, use it
+  } else {
+    res.status(400);
+    throw new Error("Please enter a valid mobile number");
   }
 
   // Find if user already exists
@@ -32,6 +40,7 @@ const registerUser = asyncHandler(async (req, res) => {
   const user = await User.create({
     name,
     email,
+    mobile,
     password: hashedPassword,
   });
 
@@ -40,6 +49,7 @@ const registerUser = asyncHandler(async (req, res) => {
       _id: user._id,
       name: user.name,
       email: user.email,
+      mobile: user.mobile,
       token: generateToken(user._id),
     });
   } else {

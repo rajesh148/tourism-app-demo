@@ -9,6 +9,7 @@ const Register = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    mobile: "",
     password: "",
     password2: "",
   });
@@ -18,7 +19,7 @@ const Register = () => {
 
   const { isLoading } = useSelector((store) => store.auth);
 
-  const { name, email, password, password2 } = formData;
+  const { name, email, mobile, password, password2 } = formData;
 
   const onChange = (e) => {
     setFormData((prevState) => ({
@@ -36,6 +37,7 @@ const Register = () => {
       const userData = {
         name,
         email,
+        mobile,
         password,
       };
 
@@ -116,6 +118,25 @@ const Register = () => {
                       required=""
                     />
                   </div>
+
+                  <div>
+                    <label
+                      htmlFor="mobile"
+                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    >
+                      Your Mobile Number
+                    </label>
+                    <input
+                      type="number"
+                      name="mobile"
+                      id="mobile"
+                      value={mobile}
+                      onChange={onChange}
+                      className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="999999999"
+                      required=""
+                    />
+                  </div>
                   <div>
                     <label
                       htmlFor="password"
@@ -154,7 +175,7 @@ const Register = () => {
                       autoComplete="on"
                     />
                   </div>
-                  <div className="flex items-start">
+                  {/* <div className="flex items-start">
                     <div className="flex items-center h-5">
                       <input
                         id="terms"
@@ -178,7 +199,7 @@ const Register = () => {
                         </Link>
                       </label>
                     </div>
-                  </div>
+                  </div> */}
                   <button
                     type="submit"
                     onClick={onSubmit}

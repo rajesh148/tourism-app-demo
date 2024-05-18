@@ -1,12 +1,18 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CustomSpinner from "./CustomSpinner";
+import { useDispatch } from "react-redux";
+import { login } from "../slices/authSlice";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [isLoading, setIsLoading] = useState(true);
 
@@ -23,7 +29,21 @@ const Login = () => {
     e.preventDefault();
     console.log("Clicked");
 
-    console.log(formData);
+    const userData = {
+      email,
+      password,
+    };
+
+    dispatch(login(userData))
+      .unwrap()
+      .then((user) => {
+        // NOTE: by unwrapping the AsyncThunkAction we can navigate the user after
+        // getting a good response from our API or catch the AsyncThunkAction
+        // rejection to show an error message
+        toast.success(`Logged in as ${user.name}`);
+        navigate("/");
+      })
+      .catch(toast.error);
   };
 
   // if (isLoading) {

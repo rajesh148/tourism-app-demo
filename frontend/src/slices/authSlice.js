@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk, createAction } from "@reduxjs/toolkit";
 import authService from "./authService";
 
-import { extractErrorMessage } from "../../utils";
+import { extractErrorMessage } from "../utils/utils";
 
 // Get user from localstorage
 const user = JSON.parse(localStorage.getItem("user"));

@@ -2,7 +2,7 @@ const path = require("path");
 const express = require("express");
 require("colors");
 require("dotenv").config();
-const { errorHandler } = require("./middleware/errorMiddleware");
+const { errorHandler } = require("./middlewares/errorMiddleware");
 const connectDB = require("./config/db");
 const PORT = process.env.PORT || 5000;
 
@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Routes
-app.use("/api/users", require("./routes/userRoutes"));
+app.use("/api/users", require("./routes/userRoute"));
 
 // Serve Frontend
 if (process.env.NODE_ENV === "production") {
@@ -28,7 +28,7 @@ if (process.env.NODE_ENV === "production") {
   });
 } else {
   app.get("/", (_, res) => {
-    res.status(200).json({ message: "Welcome to the Support Desk API" });
+    res.status(200).json({ message: "Welcome to the Tourism API" });
   });
 }
 
